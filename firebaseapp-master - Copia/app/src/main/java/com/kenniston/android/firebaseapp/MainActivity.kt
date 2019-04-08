@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login(email:String,passW:String,activity: Activity) {
+
         val mAuth = FirebaseAuth.getInstance()
         mAuth?.signInWithEmailAndPassword(email,passW)
-        ?.addOnCompleteListener(activity){task ->
-            if(task.isSuccessful){
-                startActivity(Intent(applicationContext, MainActivity2::class.java))
-            } else {
-                Toast.makeText(applicationContext,"Authentication failed.",
-                Toast.LENGTH_SHORT).show()
-            }
-        }
-
+                ?.addOnCompleteListener(activity){ task ->
+                    if(task.isSuccessful){
+                        startActivity(Intent(applicationContext, MainActivity2::class.java))
+                    } else {
+                        Toast.makeText(applicationContext,"Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                    }
+                }
 
     }
 
